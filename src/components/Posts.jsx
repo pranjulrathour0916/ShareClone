@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import bgImage from '../IMG_20230427_183834.jpg'
+import bgImage from '../images/IMG_20230427_183834.jpg'
 import Allposts from './Allposts'
 import PostContext from '../context/posts/postContext'
 const Posts = () => {

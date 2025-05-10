@@ -1,5 +1,10 @@
 import  { useState } from "react";
 import PostContext from "./postContext";
+import image1 from "../../images/JK.jpg"
+import img2 from "../../images/city.jpg"
+import img3 from "../../images/citylight.jpg"
+import img4 from "../../images/europe.jpg"
+
 
 const PostState = (props) => {
   const [age, setAge] = useState("25");
@@ -7,25 +12,25 @@ const PostState = (props) => {
   const intialPosts = [
     {
         "user":"vskdjcjvkgcadvkgcvk",
-        "img" : "url",
+        "img" : image1,
         "title": "this is title",
         "description" : "cdblckdablk  hudcha hudauch; ouuh;dnhhuoh;ohdn ;vbivgslvbvbv iv vu wvuig"
     },
     {
         "user":"vskdjcjvkgcadvkgcvk",
-        "img" : "url",
+        "img" : img2,
         "title": "this is title",
         "description" : "cdblckdablk  hudcha hudauch; ouuh;dnhhuoh;ohdn ;vbivgslvbvbv iv vu wvuig"
     },
     {
         "user":"vskdjcjvkgcadvkgcvk",
-        "img" : "url",
+        "img" : img3,
         "title": "this is title",
         "description" : "cdblckdablk  hudcha hudauch; ouuh;dnhhuoh;ohdn ;vbivgslvbvbv iv vu wvuig"
     },
     {
         "user":"vskdjcjvkgcadvkgcvk",
-        "img" : "url",
+        "img" : img4,
         "title": "this is title",
         "description" : "cdblckdablk  hudcha hudauch; ouuh;dnhhuoh;ohdn ;vbivgslvbvbv iv vu wvuig"
     }
