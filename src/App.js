@@ -5,7 +5,9 @@ import Navbar from "./components/Navbar,";
 import PostState from "./context/posts/PostState";
 
 import bgImage from "../src/images/colour.jpg";
-import Createpost from "./components/Createpost";
+import Login from "./components/forms/Login";
+// import SignUp from "./components/forms/SignUp";
+// import Createpost from "./components/Createpost";
 function App() {
   return (
     <div className="relative min-h-screen">
@@ -18,7 +20,9 @@ function App() {
         <PostState>
           {/* <Posts /> */}
           {/* <Home/> */}
-          <Createpost/>
+          {/* <Createpost/> */}
+          {/* <SignUp/> */}
+          <Login/>
         </PostState>
       </div>
     </div>
