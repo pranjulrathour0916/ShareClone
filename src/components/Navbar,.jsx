@@ -7,7 +7,7 @@ const Navbar = () => {
   };
   return (
     <div>
-      <nav className="bg-transparent text-black font-semibold md:font-semibold p-3 m-auto md:text-sm">
+      <nav className="bg-transparent text-white font-semibold md:font-semibold p-3 m-auto md:text-sm">
         <div className="md:flex md:justify-between flex justify-between">
           <div>
             <h3>Logo</h3>
