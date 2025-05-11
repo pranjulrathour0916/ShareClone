@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,13 +16,22 @@ const Navbar = () => {
 
           <div>
             <ul className="md:flex hidden space-x-10 cursor-pointer">
-              <li className="hover:text-red-500">Home</li>
-              <li className="hover:text-red-500">About Us</li>
-              <li className="hover:text-red-500">Contact Us</li>
+              <li className="hover:text-red-500">
+                <Link to="/">Home</Link>
+              </li>
+              <li className="hover:text-red-500">
+                {" "}
+                <Link to="/posts">All Posts</Link>
+              </li>
+              <li className="hover:text-red-500">
+                <Link to="/create">Create Blog</Link>
+              </li>
             </ul>
           </div>
           <div className="hidden md:block">
-            <h3 className="hover:text-green-400">Login/SignUp</h3>
+            <h3 className="hover:text-green-400">
+              <Link to="/login">Login</Link>
+            </h3>
           </div>
           <div className="md:hidden text-white font-semibold text-xl">
             <button onClick={handleClick}>{"\u2261"}</button>
@@ -31,11 +41,17 @@ const Navbar = () => {
           {isOpen && (
             <div className="md:hidden mt-2 space-y-2 text-right">
               <ul>
-                <li className="hover:text-red-500">Home</li>
-                <li className="hover:text-red-500">About Us</li>
-                <li className="hover:text-red-500">Contact Us</li>
-                <li className="hover:text-red-500">Login/SignUp</li>
-
+                <li className="hover:text-red-500">
+                  <Link to="/">Home</Link>
+                </li>
+                <li className="hover:text-red-500">
+                  {" "}
+                  <Link to="/posts">All Posts</Link>
+                </li>
+                <li className="hover:text-red-500">
+                  <Link to="/create">Create Blog</Link>
+                </li>
+                <li className="hover:text-red-500"><Link to="/login">Login</Link></li>
               </ul>
             </div>
           )}
