@@ -1,9 +1,12 @@
-import React, { useContext } from 'react'
+// import { useContext } from 'react'
 import bgImage from '../images/IMG_20230427_183834.jpg'
 import Allposts from './Allposts'
-import PostContext from '../context/posts/postContext'
+// import { postAItemAcions } from '../redux/postItemSlice'
+// import PostContext from '../context/posts/postContext'
+import { useSelector } from 'react-redux'
 const Posts = () => {
-  const {posts} = useContext(PostContext)
+  // const {posts} = useContext(PostContext)
+  const posts = useSelector(state => state.postItem.items)
 
   return (
     <div>

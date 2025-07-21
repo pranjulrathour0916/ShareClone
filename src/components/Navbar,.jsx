@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
+import { isAuthActions } from "../redux/postSlice";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
+  const isAuth = useSelector(state => state.auth.isAuthenticated);
+  const dispatch = useDispatch();
+  const loginHandler = (e) =>{
+    e.preventDefault();
+   dispatch(isAuthActions.login());
+   console.log("works")
+  }
   return (
     <div>
       <nav className="bg-transparent text-white font-semibold md:font-semibold p-3 m-auto md:text-sm">
@@ -18,6 +26,7 @@ const Navbar = () => {
             <ul className="md:flex hidden space-x-10 cursor-pointer">
               <li className="hover:text-red-500">
                 <Link to="/">Home</Link>
+                 
               </li>
               <li className="hover:text-red-500">
                 {" "}
@@ -51,8 +60,9 @@ const Navbar = () => {
                 <li className="hover:text-red-500">
                   <Link to="/create">Create Blog</Link>
                 </li>
-                <li className="hover:text-red-500"><Link to="/login">Login</Link></li>
+                <li className="hover:text-red-500" ><Link to="/login" onClick={loginHandler}>{isAuth ? "login" : "logout"}</Link></li>
               </ul>
+         
             </div>
           )}
         </div>

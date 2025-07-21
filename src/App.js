@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import bgImage from "../src/images/colour.jpg";
 import Login from "./components/forms/Login";
 import Createpost from "./components/Createpost";
+// import Test from "./components/Test";
 // import SignUp from "./components/forms/SignUp";
 // import Createpost from "./components/Createpost";
 function App() {
@@ -15,17 +16,18 @@ function App() {
       <Router>
     <div className="relative min-h-screen">
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+        className="absolute inset-0 bg-cover bg-center bg-fixed bg-no-repeat z-0"
         style={{ backgroundImage: `url(${bgImage})` }}
       ></div>
       <div className="relative z-10">
         <Navbar/>
         <PostState>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home/>} />
         <Route path="/posts" element={<Posts/>} />
         <Route path="/create" element={<Createpost />} />
         <Route path="/login" element={<Login />} />
+
       </Routes>
         </PostState>
       </div>
