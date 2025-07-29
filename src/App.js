@@ -2,7 +2,7 @@ import "./App.css";
 import Home from './components/Home';
 import Posts from "./components/Posts";
 import Navbar from "./components/Navbar,"
-
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import PostState from "./context/posts/PostState";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import bgImage from "../src/images/colour.jpg";
@@ -16,7 +16,7 @@ function App() {
       <Router>
     <div className="relative min-h-screen">
       <div
-        className="absolute inset-0 bg-cover bg-center bg-fixed bg-no-repeat z-0"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-fixed z-0"
         style={{ backgroundImage: `url(${bgImage})` }}
       ></div>
       <div className="relative z-10">

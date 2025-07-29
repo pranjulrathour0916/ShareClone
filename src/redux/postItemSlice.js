@@ -16,7 +16,8 @@ const initialItemState = {
         "img" : image1,
         "title": "this is from react redux",
         "description" : "cdblckdablk  hudcha hudauch; ouuh;dnhhuoh;ohdn ;vbivgslvbvbv iv vu wvuig",
-        "likes" : 0
+        "likes" : 0,
+        "comments" : "Nice1"
     },
     {
         "id" : "2",
@@ -25,7 +26,7 @@ const initialItemState = {
         "title": "this is title",
         "description" : "cdblckdablk  hudcha hudauch; ouuh;dnhhuoh;ohdn ;vbivgslvbvbv iv vu wvuig",
         "likes" : 1,
-        "comments" : "Nice!"
+        "comments" : "Nice2"
     },
     {
         "id" : "3",
@@ -34,7 +35,7 @@ const initialItemState = {
         "title": "this is title",
         "description" : "cdblckdablk  hudcha hudauch; ouuh;dnhhuoh;ohdn ;vbivgslvbvbv iv vu wvuig",
         "likes" : 2,
-        "comments" : "Nice!"
+        "comments" : "Nice3"
     },
     {
         "id" : "4",
@@ -43,7 +44,7 @@ const initialItemState = {
         "title": "this is title",
         "description" : "cdblckdablk  hudcha hudauch; ouuh;dnhhuoh;ohdn ;vbivgslvbvbv iv vu wvuig",
         "likes" : 3,
-        "comments" : "Nice!"
+        "comments" : "Nice4"
     }
   ]
 }
@@ -65,6 +66,15 @@ const initialItemState = {
       if(item)
       {
         item.likes++;
+      }
+    },
+    comments(state, actions){
+      console.log("comment redux working")
+      const id = actions.payload
+      const cmnt = state.items.find(item => item.id === id)
+      if(cmnt)
+      {
+        console.log(cmnt.comments)
       }
     }
   }
