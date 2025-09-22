@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import bgImage from "../src/images/colour.jpg";
 import Login from "./components/forms/Login";
 import Createpost from "./components/Createpost";
+import PageWrapper from "./components/animations/SimpleFade";
 // import Test from "./components/Test";
 // import SignUp from "./components/forms/SignUp";
 // import Createpost from "./components/Createpost";
@@ -23,11 +24,10 @@ function App() {
         <Navbar/>
         <PostState>
       <Routes>
-        <Route path="/" element={<Home/>} />
+        <Route path="/" element={<PageWrapper><Home/></PageWrapper>} />
         <Route path="/posts" element={<Posts/>} />
         <Route path="/create" element={<Createpost />} />
         <Route path="/login" element={<Login />} />
-
       </Routes>
         </PostState>
       </div>

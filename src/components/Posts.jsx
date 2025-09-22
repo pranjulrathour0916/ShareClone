@@ -4,6 +4,7 @@ import Allposts from './Allposts'
 // import { postAItemAcions } from '../redux/postItemSlice'
 // import PostContext from '../context/posts/postContext'
 import { useSelector } from 'react-redux'
+import PageWrapper from './animations/SimpleFade'
 const Posts = () => {
   // const {posts} = useContext(PostContext)
   const posts = useSelector(state => state.postItem.items)
@@ -19,7 +20,7 @@ const Posts = () => {
       </div>
       {
         posts.map((post, index)=>{
-          return <Allposts post = {post} key={index}/>
+          return <PageWrapper><Allposts post = {post} key={index}/></PageWrapper>
         })
       }
     </div>

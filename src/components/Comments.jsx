@@ -34,8 +34,8 @@ const Comments = ({id}) => {
         </ul>
       </div>
          {showComment && <div className="list bg-white flex-col text-base opacity-80 rounded-lg my-1">
-       <ul>
-        <li>{post.user}</li>
+       <ul className="mx-2">
+        <li className="font-bold">{post.user}</li>
         <li>{post.comments} </li>
        </ul>
       </div>}
