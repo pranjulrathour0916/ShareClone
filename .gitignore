@@ -11,6 +11,10 @@
 # production
 /build
 
+# backend folder should not be committed or deployed
+/blog-backend
+
+
 # misc
 .DS_Store
 .env.local
