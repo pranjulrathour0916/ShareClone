@@ -23,7 +23,7 @@ const Navbar = () => {
             <img
               src={logo}
               alt="Logo"
-              className="absolute z-10 sm:w-[50px] sm:h-[50px] md:w-[80px] md:h-[80px] rounded-full object-cover"
+              className="absolute z-10 w-[35px] h-[35px] sm:w-[50px] sm:h-[50px] md:w-[80px] md:h-[80px] rounded-full object-cover"
             />
           </div>
 
