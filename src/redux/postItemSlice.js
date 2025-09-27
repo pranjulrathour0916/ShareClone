@@ -12,7 +12,7 @@ const initialItemState = {
     items : [
     {
         "id" : "1",
-        "user":"vskdjcjvkgcadvkgcvk",
+        "user":"Pranjul",
         "img" : image1,
         "title": "this is from react redux",
         "description" : "cdblckdablk  hudcha hudauch; ouuh;dnhhuoh;ohdn ;vbivgslvbvbv iv vu wvuig",
@@ -21,7 +21,7 @@ const initialItemState = {
     },
     {
         "id" : "2",
-        "user":"vskdjcjvkgcadvkgcvk",
+        "user":"Aman",
         "img" : img2,
         "title": "this is title",
         "description" : "cdblckdablk  hudcha hudauch; ouuh;dnhhuoh;ohdn ;vbivgslvbvbv iv vu wvuig",
@@ -30,7 +30,7 @@ const initialItemState = {
     },
     {
         "id" : "3",
-        "user":"vskdjcjvkgcadvkgcvk",
+        "user":"Prinshu",
         "img" : img3,
         "title": "this is title",
         "description" : "cdblckdablk  hudcha hudauch; ouuh;dnhhuoh;ohdn ;vbivgslvbvbv iv vu wvuig",
@@ -39,7 +39,7 @@ const initialItemState = {
     },
     {
         "id" : "4",
-        "user":"vskdjcjvkgcadvkgcvk",
+        "user":"Satyam",
         "img" : img4,
         "title": "this is title",
         "description" : "cdblckdablk  hudcha hudauch; ouuh;dnhhuoh;ohdn ;vbivgslvbvbv iv vu wvuig",

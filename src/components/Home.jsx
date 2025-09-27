@@ -1,5 +1,6 @@
 import React from "react";
 import bgImage from '../../src/images/citylight.jpg'
+import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div>
@@ -11,7 +12,7 @@ const Home = () => {
           Create a unique and beautiful blog easily.
         </p>
         <button className="bg-yellow-300 p-2 rounded-lg my-4 text-black font-semibold">
-          <span className="text-sm">Creat Blog</span>
+          <span className="text-sm"><Link to="/create">Create Blog</Link></span>
         </button>
       </div>
       <div className="md:flex md:justify-between">
