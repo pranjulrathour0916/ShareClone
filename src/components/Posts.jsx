@@ -20,7 +20,7 @@ const Posts = () => {
       </div>
       {
         posts.map((post, index)=>{
-          return <PageWrapper><Allposts post = {post} key={index}/></PageWrapper>
+          return <PageWrapper><Allposts post = {post} key={post.id}/></PageWrapper>
         })
       }
     </div>
