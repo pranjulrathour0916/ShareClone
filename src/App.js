@@ -9,6 +9,7 @@ import bgImage from "../src/images/colour.jpg";
 import Login from "./components/forms/Login";
 import Createpost from "./components/Createpost";
 import PageWrapper from "./components/animations/SimpleFade";
+import SignUp from "./components/forms/SignUp";
 // import Test from "./components/Test";
 // import SignUp from "./components/forms/SignUp";
 // import Createpost from "./components/Createpost";
@@ -27,7 +28,9 @@ function App() {
         <Route path="/" element={<PageWrapper><Home/></PageWrapper>} />
         <Route path="/posts" element={<Posts/>} />
         <Route path="/create" element={<Createpost />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/signUp" element={<SignUp />} />
+        <Route path="/signUp" element={<SignUp />} />   
+         <Route path="/login" element={<Login />} />  
       </Routes>
         </PostState>
       </div>

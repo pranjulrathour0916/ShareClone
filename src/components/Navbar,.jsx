@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { isAuthActions } from "../redux/postSlice";
 import logo from "../images/wipro.jpeg";
@@ -8,12 +8,14 @@ const Navbar = () => {
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
+  const navigate = useNavigate()
   const isAuth = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
   const loginHandler = (e) => {
     e.preventDefault();
-    dispatch(isAuthActions.login());
     console.log("works");
+    navigate("/login")
+    dispatch(isAuthActions.login());
   };
   return (
     <div>
@@ -43,7 +45,7 @@ const Navbar = () => {
           </div>
           <div className="hidden md:block">
             <h3 className="hover:text-green-400">
-              <Link to="/login">Login</Link>
+              <Link  onClick={loginHandler} >{isAuth ? "SignUp" : "Login"}</Link>
             </h3>
           </div>
           <div className="md:hidden text-white font-semibold text-xl">
@@ -64,11 +66,7 @@ const Navbar = () => {
                 <li className="hover:text-red-500">
                   <Link to="/create">Create Blog</Link>
                 </li>
-                <li className="hover:text-red-500">
-                  <Link to="/login" onClick={loginHandler}>
-                    {isAuth ? "login" : "logout"}
-                  </Link>
-                </li>
+                
               </ul>
             </div>
           )}

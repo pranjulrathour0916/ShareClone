@@ -5,7 +5,6 @@ import { fectAllPosts } from '../redux/postItemSlice'
 // import bgImage from '../images/IMG_20230427_183834.jpg'
 const Allposts = (props) => {
   const dispatch = useDispatch();
-  const items = useSelector((state)=> state.postItem.items)
   const itemStatus = useSelector((state)=> state.postItem.status)
   const {post} = props
 
@@ -15,15 +14,7 @@ const Allposts = (props) => {
     }
   }, [itemStatus, dispatch]); // Dependency array ensures it runs once (if status is 'idle')
 
-  let content = null;
-
-  if (itemStatus === 'loading') {
-    content = <p>Loading...</p>;
-  } else if (itemStatus === 'succeeded') {
-    content = items.map((post) => <div key={post.id}>{post.title}</div>);
-  } else if (itemStatus === 'failed') {
-    // content = <p>{error}</p>;
-  }
+  
   return (
     <div>
       <div className="md:flex md:flex-col  md:mx-36">
@@ -39,7 +30,7 @@ const Allposts = (props) => {
         <button className='text-yellow-400'>READ MORE</button>
        </div>
      <div className='md:text-lg'>
-       <Comments like = {post.likes} comment = {post.comments} id = {post.id}/>
+       <Comments post = {post} />
      </div>
       </div>
       </div>

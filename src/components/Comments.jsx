@@ -1,17 +1,14 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { postAItemAcions } from "../redux/postItemSlice";
 import { useState } from "react";
 
-const Comments = ({ id }) => {
+const Comments = (post ) => {
   const [colour, setColour] = useState(true);
   const [showComment, setShowComment] = useState(false);
-  const post = useSelector((state) =>
-    state.postItem.items.find((item) => item.id === id)
-  );
   const dispatch = useDispatch();
   const likeHandler = () => {
-    console.log("click");
-    dispatch(postAItemAcions.totalLikes(post.id));
+    console.log("click post id is", post);
+    dispatch(postAItemAcions.totalLikes(post));
   };
   const handleClick = () => {
     setColour(!colour);

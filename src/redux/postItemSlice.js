@@ -7,6 +7,8 @@ import axios from "axios";
 
 const POST_URL = "http://localhost:5000/api/posts";
 
+const LOG_URL = "http://localhost:5000/api/user";
+
 const initialItemState = {
   showItem: false,
   status: "idle",
@@ -69,6 +71,7 @@ const postItemSlice = createSlice({
     totalLikes(state, actions) {
       console.log("works");
       const id = actions.payload;
+      console.log("this is id", id)
       const item = state.items.find((item) => item.id === id);
       if (item) {
         item.likes++;
@@ -99,6 +102,8 @@ const postItemSlice = createSlice({
   },
 });
 
+// For Fetching all Posts 
+
 export const fectAllPosts = createAsyncThunk("posts/fectAllPosts", async () => {
   const response = await axios.get(`${POST_URL}/allPosts`, {
     headers: {
@@ -108,6 +113,8 @@ export const fectAllPosts = createAsyncThunk("posts/fectAllPosts", async () => {
   });
   return response.data;
 });
+
+// For Blog Creation
 
 export const uploadPost = createAsyncThunk(
   "posts/uploadPost",
@@ -124,6 +131,25 @@ export const uploadPost = createAsyncThunk(
     return response.data;
   }
 );
+
+export const signUp = createAsyncThunk(
+  "posts/signUp", async (newUser) => {
+    const response = await axios.post(`${LOG_URL}/signUp`, newUser);
+    console.log("inside signUp", response.data);
+    if(response)
+    {
+      return "success"
+    }
+    else
+      return "Error"
+  }
+)
+
+export const login = createAsyncThunk("posts/login", async (logUser) => {
+  const response = await axios.post(`${LOG_URL}/login`, logUser)
+  console.log("inside login", response.data)
+  localStorage.setItem(response);
+})
 export const postAItemAcions = postItemSlice.actions;
 
 export default postItemSlice.reducer;
