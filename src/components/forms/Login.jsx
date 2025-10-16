@@ -1,16 +1,16 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { login } from "../../redux/postItemSlice"
+import { Link, useNavigate } from "react-router-dom"
 
 const Login = () => {
-
+const [logErrror, setLogError] = useState("")
 const [logData, setLogData] = useState({
   email :"",
   password : ""
 })
-
 const dispatch = useDispatch()
-
+const navigate = useNavigate()
 const handleChange = (e) =>{
     e.preventDefault()
     const {name, value} = e.target
@@ -28,9 +28,12 @@ const handleSubmit = async (e) =>{
   }
   try {
     const token = await dispatch(login(payload)).unwrap()
-    console.log("inside loginSumbit",token)
+    console.log("inside login Sumbit",token)
+    navigate('/')
+    
   } catch (error) {
-    console.error("Invalid Credentials")
+    console.error("Error is ",error)
+     setLogError(error)
   }
 }
   
@@ -70,7 +73,12 @@ const handleSubmit = async (e) =>{
         </label>
         <button onClick={handleSubmit} type="submit" className="bg-white p-2 rounded-2xl hover:text-white hover:bg-blue-900">Submit</button>
       </div>
-        
+      <div className="error flex justify-center mt-3">
+        <h1 className="text-red-600 text-lg">{logErrror}</h1>
+      </div>
+      <div className="signup mt-4 flex justify-center ">
+        <h2 className="text-white underline">Don't have an account? <Link className="text-green-600" to="/signUp">SignUP</Link></h2>
+      </div>
     </div>
   )
 }

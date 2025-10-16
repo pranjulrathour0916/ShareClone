@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signUp } from "../../redux/postItemSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
 
@@ -90,7 +90,9 @@ const handleSubmit = async(e)=>{
         </label>
         <button onClick={handleSubmit} type="submit" className="bg-white p-2 rounded-2xl hover:text-white hover:bg-blue-900">Submit</button>
       </div>
-        
+        <div className="login flex justify-center mt-4">
+          <h2 className="text-white underline">Already have an account ? <Link to="/login" className="text-red-500">Login</Link></h2>
+        </div>
     </div>
   );
 };

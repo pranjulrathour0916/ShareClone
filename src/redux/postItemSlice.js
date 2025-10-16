@@ -107,8 +107,7 @@ const postItemSlice = createSlice({
 export const fectAllPosts = createAsyncThunk("posts/fectAllPosts", async () => {
   const response = await axios.get(`${POST_URL}/allPosts`, {
     headers: {
-      "auth-token":
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhkMzlkNGMwOThjMTc1ZDNiN2VhNmQwIiwiZW1haWwiOiJyYXRoMkBnbWFpbC5jb20ifSwiaWF0IjoxNzU4Njk4ODUxfQ.CZCKT09W4YP8nxWQRuoHaay9RwlW_-CCNvaEEsZVlFA",
+      "auth-token": localStorage.getItem("token"),
     },
   });
   return response.data;
@@ -145,10 +144,20 @@ export const signUp = createAsyncThunk(
   }
 )
 
-export const login = createAsyncThunk("posts/login", async (logUser) => {
-  const response = await axios.post(`${LOG_URL}/login`, logUser)
+export const login = createAsyncThunk("posts/login", async (logUser, thunkAPI) => {
+ try {
+   const response = await axios.post(`${LOG_URL}/login`, logUser)
   console.log("inside login", response.data)
-  localStorage.setItem(response);
+  localStorage.setItem("token",response.data);
+  return response.data;
+ } catch (error) {
+  if(error.response && error.response.status === 400)
+  {
+    return thunkAPI.rejectWithValue("Inavlid Credentials")
+  }
+  else
+    return thunkAPI.rejectWithValue("Something went wrong")
+ }
 })
 export const postAItemAcions = postItemSlice.actions;
 
