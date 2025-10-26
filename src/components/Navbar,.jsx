@@ -3,6 +3,7 @@ import { Link,  useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { isAuthActions } from "../redux/postSlice";
 import logo from "../images/wipro.jpeg";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = () => {
@@ -19,6 +20,9 @@ const Navbar = () => {
   };
   return (
     <div>
+      <div>
+      
+      </div>
       <nav className="bg-transparent text-white font-semibold md:font-semibold p-3 m-auto md:text-sm">
         <div className="md:flex md:justify-between flex justify-between">
           <div>

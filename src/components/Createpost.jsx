@@ -1,10 +1,12 @@
 import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { uploadPost } from "../redux/postItemSlice";
+import Saving from "./Saving";
 
 const Createpost = () => {
   const fileInputRef = useRef(null);
   const dispatch = useDispatch();
+  const [success, setSucess] = useState(false)
 
    const [base64String, setBase64String] = useState('');
 
@@ -53,7 +55,7 @@ const Createpost = () => {
   
   
 
-  const handleFormData = (e) => {
+  const handleFormData = async (e) => {
     e.preventDefault();
     const payload = {
         title: formData.title,
@@ -62,10 +64,21 @@ const Createpost = () => {
         logUser: "",
         _id: "",
     };
-    dispatch(uploadPost(payload));
+   try {
+     const postData = await dispatch(uploadPost(payload)).unwrap();
+     console.log(success, postData)
+     if(postData)
+     setSucess(true)
+   } catch (error) {
+    setSucess(error)
+   }
   };
   return (
     <div>
+      <div className="relative">
+      </div>
+      {success && <Saving/> }
+      
       <form onSubmit={handleFormData}>
         <div className>
           <label>

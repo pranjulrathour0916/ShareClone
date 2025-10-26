@@ -17,14 +17,14 @@ const Allposts = (props) => {
   
   return (
     <div>
-      <div className="md:flex md:flex-col  md:mx-36">
-         <div className="flex flex-col mx-3 md:justify-center md:text-9xl mt-10 mb-4 bg-cover bg-center bg-fixed bg-no-repeat h-auto md:h-auto  rounded-2xl opacity-100" style={{backgroundImage : `url(${post.image})`}}>
+      <div className="md:flex md:flex-col  md:mx-36 ">
+         <div className="flex flex-col mx-3 md:justify-center md:text-9xl mt-10 mb-4 bg-cover bg-center bg-fixed bg-no-repeat h-auto md:h-auto  rounded-2xl opacity-100 " style={{backgroundImage : `url(${post.image})`}}>
           
             <div className=' my-7  md:text-2xl mx-6 p-2 font-bold text-white'>
                 <h5>{post.title}</h5>
             </div>
-        <p className=" text-white font-bold text-center text-base md:font-semibold md:text-center " >
-          {post.desc}
+        <p className=" text-white font-bold text-center text-base md:font-semibold md:text-center md:text-xl" >
+          <span className='bg-black bg-opacity-85 z-50 hover:text-opacity-100'>{post.desc} </span>
         </p>
        <div className='text-sm mx-6 p-2 font-bold md:my-8'  >
         <button className='text-yellow-400'>READ MORE</button>
