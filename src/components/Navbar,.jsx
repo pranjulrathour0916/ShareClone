@@ -1,24 +1,14 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../images/wipro.jpeg";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [token, setToken] = useState(false)
+
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
-  useEffect(()=>{
-    const tkn = localStorage.getItem("token")
-    if(tkn)
-    {
-      setToken(true)
-    }
-  })
-  const logoout = () =>{
-    localStorage.clear("token")
-    setToken(false)
-  }
+
   
   return (
     <div>
@@ -47,9 +37,7 @@ const Navbar = () => {
               <li className="hover:text-red-500">
                 <Link to="/create">Create Blog</Link>
               </li>
-              <li className={`hover:text-red-500 ${token ? "block" : "hidden"}`}>
-                <Link onClick={logoout} to="/login">Logout</Link>
-              </li>
+              
             </ul>
           </div>
           <div className="hidden md:block">
