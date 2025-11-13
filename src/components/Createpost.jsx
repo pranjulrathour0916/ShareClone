@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { uploadPost } from "../redux/postItemSlice";
+import { fectAllPosts, uploadPost } from "../redux/postItemSlice";
 import Saving from "./Saving";
 
 const Createpost = () => {
@@ -8,77 +8,82 @@ const Createpost = () => {
   const dispatch = useDispatch();
   const [success, setSucess] = useState(false)
 
-   const [base64String, setBase64String] = useState('');
+  const [base64String, setBase64String] = useState('');
 
   const handleDivClick = () => {
     fileInputRef.current.click(); // Programmatically trigger file input
 
   };
 
-  const handlClear = ()=>{
+  const handlClear = () => {
     setFormData({
-      title :"",
-      desc : ""
+      title: "",
+      desc: ""
     })
   }
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-    
-     const reader = new FileReader();
-     reader.onload = () =>{
-      const base64 = reader.result;
-      setBase64String(base64)
-     }
-     reader.readAsDataURL(file); 
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        const base64 = reader.result;
+        setBase64String(base64)
+      }
+      reader.readAsDataURL(file);
     }
   };
 
   const [formData, setFormData] = useState({
     title: "",
     desc: "",
-     image: "",
+    image: "",
     logUser: "",
     _id: "",
   });
   const handnleChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
-    
+
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
+
     }
-  ));
+
+    ));
+
   };
-  
-  
+
+
 
   const handleFormData = async (e) => {
     e.preventDefault();
     const payload = {
-        title: formData.title,
-        desc: formData.desc, 
-        image: base64String, 
-        logUser: "",
-        _id: "",
+      title: formData.title,
+      desc: formData.desc,
+      image: base64String,
+      logUser: "",
+      _id: "",
     };
-   try {
-     const postData = await dispatch(uploadPost(payload)).unwrap();
-     console.log(success, postData)
-     if(postData)
-     setSucess(true)
-   } catch (error) {
-    setSucess(error)
-   }
+    try {
+      const postData = await dispatch(uploadPost(payload)).unwrap();
+      console.log(success, postData)
+      if (postData) {
+        setSucess(true)
+        dispatch(fectAllPosts())
+      }
+    } catch (error) {
+      setSucess(error)
+    }
   };
   return (
     <div>
       <div className="relative">
       </div>
-      {success && <Saving/> }
-      
+      {success && <Saving />}
+
       <form onSubmit={handleFormData}>
         <div className>
           <label>
@@ -112,7 +117,7 @@ const Createpost = () => {
                 </button>
                 <button
                   type="submit"
-                  
+
                   className="rounded border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-900 shadow-sm transition-colors hover:bg-gray-100 dark:border-gray-600 dark:text-white dark:hover:bg-green-700"
                 >
                   Save

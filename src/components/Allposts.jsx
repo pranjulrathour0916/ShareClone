@@ -9,10 +9,14 @@ const Allposts = (props) => {
   const {post} = props
 
   useEffect(() => {
+    console.log("this works")
+    
     if (itemStatus === 'idle') {
       dispatch(fectAllPosts());
     }
-  }, [itemStatus, dispatch]); // Dependency array ensures it runs once (if status is 'idle')
+    else
+      console.log("useeffect is not working")
+  }, [itemStatus, dispatch]); 
 
   
   return (

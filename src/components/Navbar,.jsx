@@ -1,23 +1,25 @@
-import { useState } from "react";
-import { Link,  useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { isAuthActions } from "../redux/postSlice";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../images/wipro.jpeg";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [token, setToken] = useState(false)
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
-  const navigate = useNavigate()
-  const isAuth = useSelector((state) => state.auth.isAuthenticated);
-  const dispatch = useDispatch();
-  const loginHandler = (e) => {
-    e.preventDefault();
-    console.log("works");
-    navigate("/login")
-    dispatch(isAuthActions.login());
-  };
+  useEffect(()=>{
+    const tkn = localStorage.getItem("token")
+    if(tkn)
+    {
+      setToken(true)
+    }
+  })
+  const logoout = () =>{
+    localStorage.clear("token")
+    setToken(false)
+  }
+  
   return (
     <div>
       <div>
@@ -36,7 +38,7 @@ const Navbar = () => {
           <div>
             <ul className="md:flex hidden space-x-10 cursor-pointer">
               <li className="hover:text-red-500">
-                <Link to="/">Home</Link>
+                <Link to="/home">Home</Link>
               </li>
               <li className="hover:text-red-500">
                 {" "}
@@ -45,12 +47,13 @@ const Navbar = () => {
               <li className="hover:text-red-500">
                 <Link to="/create">Create Blog</Link>
               </li>
+              <li className={`hover:text-red-500 ${token ? "block" : "hidden"}`}>
+                <Link onClick={logoout} to="/login">Logout</Link>
+              </li>
             </ul>
           </div>
           <div className="hidden md:block">
-            <h3 className="hover:text-green-400">
-              <Link  onClick={loginHandler} >{isAuth ? "SignUp" : "Login"}</Link>
-            </h3>
+           
           </div>
           <div className="md:hidden text-white font-semibold text-xl">
             <button onClick={handleClick}>{"\u2261"}</button>
@@ -61,7 +64,7 @@ const Navbar = () => {
             <div className="md:hidden mt-2 space-y-2 text-right">
               <ul>
                 <li className="hover:text-red-500">
-                  <Link to="/">Home</Link>
+                  <Link to="/home">Home</Link>
                 </li>
                 <li className="hover:text-red-500">
                   {" "}

@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-import { login } from "../../redux/postItemSlice"
+import { fectAllPosts, login } from "../../redux/postItemSlice"
 import { Link, useNavigate } from "react-router-dom"
 
 const Login = () => {
@@ -26,10 +26,12 @@ const handleSubmit = async (e) =>{
     email : logData.email,
     password : logData.password
   }
+ console.log("this is payload",payload)
   try {
     const token = await dispatch(login(payload)).unwrap()
     console.log("inside login Sumbit",token)
-    navigate('/')
+    navigate('/home')
+    dispatch(fectAllPosts())
     
   } catch (error) {
     console.error("Error is ",error)

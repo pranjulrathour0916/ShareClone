@@ -34,7 +34,8 @@ function App() {
         <Navbar/>
         <PostState>
       <Routes>
-        <Route path="/" element={<PageWrapper><Home/></PageWrapper>} />
+        <Route path="/" element={<PageWrapper><Login/></PageWrapper>} />
+        <Route path="/home" element={<PageWrapper><Home/></PageWrapper>} />
         <Route path="/posts" element={<Posts/>} />
         <Route path="/create" element={<Createpost />} />
         <Route path="/signUp" element={<SignUp />} />
